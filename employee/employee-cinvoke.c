@@ -1,4 +1,4 @@
-/* This program  atomically unseal a pair of capabilities
+/* This program  atomically unseals a pair of capabilities
  * (code and data) by calling `ldpblr`, i.e.
  * "Load Pair of capabilities and Branch with Link".
  * It shows that `ldpblr` can unseal the pair but the unsealed
@@ -59,6 +59,10 @@ inline void ldpblr(CHERI_OBJECT * obj){
 	);
 }
 
+/* Seal (immediate) implementation.
+ * Seal a pair of capabilities without requiring any special
+ * capability, i.e. with `CHERI_PERM_SEAL` permission.
+ */
 inline CHERI_OBJECT * seal_immediate_pair(CHERI_OBJECT * obj){
 	CHERI_OBJECT * sealed_obj;
 	asm(
